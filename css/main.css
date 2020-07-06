@@ -1,0 +1,115 @@
+@import url('https://fonts.googleapis.com/css2?family=Indie+Flower&family=Open+Sans:ital,wght@0,400;0,700;1,400&family=Roboto+Slab:wght@400;700&family=Roboto:ital,wght@0,400;0,700;1,400&display=swap');
+:root{
+  --font-Roboto: 'Roboto', sans-serif;
+  --font-OpenSans: 'Open Sans', sans-serif;
+  --font-IndieFlower: 'Indie Flower', cursive;
+  --font-RobotoSlab: 'Roboto Slab', serif;
+}
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+body{
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  padding:20px;
+  max-width: 700px;
+  margin: 0 auto;
+}
+button,input,select,label{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  border: 1px solid rgba(125,125,125,0.1);
+  outline: none;
+  padding: 3px;
+  color: #353535;
+  background-color: #ffffff;
+  height: 28px;
+  font-size: 16px;
+  font-family: var(--font-RobotoSlab);
+}
+button,label{
+  width: 25px;
+  transition: 300ms;
+}
+button:hover,label:hover{
+  background-color: #f0f0f0;
+}
+.Row{
+  display:flex;
+  flex-direction:row;
+  justify-content:space-between;
+  align-items: center;
+  margin: 10px 0;
+  flex-wrap: wrap;
+}
+
+#editor{
+  box-shadow: -1px 1px 14px 0px rgba(125,125,125,0.32);
+  min-height: 40vh;
+  max-height: 60vh;
+  padding:20px;
+  overflow-y: scroll;
+}
+#editor::-webkit-scrollbar {
+  width: 5px;
+}
+#editor::-webkit-scrollbar-track {
+  background: #f1f1f100;
+}
+#editor::-webkit-scrollbar-thumb {
+  background: #e7e7e7;
+}
+#editor::-webkit-scrollbar-thumb:hover {
+  background: #dfdfdf;
+}
+#boxImg{
+  display: none;
+}
+#boxImg button{
+  position: absolute;
+  float: right;
+  background-color: #ffffff54;
+  color: #ffffff;
+  font-size: 20px;
+}
+#editorImg{
+  width: 100%;
+  box-shadow: 0px 0px 17px 1px rgba(125,125,125,0.47);
+}
+.undo-redo {
+  display: flex;
+  flex-direction: column;
+  height: 40px;
+}
+.undo-redo > div{
+  margin: 0;
+}
+.undo-redo span{
+  font-size: 12px;
+  margin: 0;
+  text-align: center;
+  background-color: #f3f3f3;
+}
+#editor p{
+  outline: 0;
+}
+#file{
+  display: none;
+}
+#fontSize{
+  width: 50px;
+}
+#underline{
+  text-decoration: underline;
+}
+#italic{
+  font-style: italic;
+}
+#bold{
+  font-weight: bold;
+}

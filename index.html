@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="css/main.css" />
+    <title>Editor Text</title>
+  </head>
+  <body>
+    <div class="Row">
+      <div>
+        <select name="font" id="font" onchange="changeFont()">
+          <option disabled="disabled" selected>Fonte</option>
+          <option value="--font-Roboto">Roboto</option>
+          <option value="--font-OpenSans">Open Sans</option>
+          <option value="--font-IndieFlower">Indie Flower</option>
+          <option value="--font-RobotoSlab">Roboto Slab</option>
+        </select>
+      </div>
+
+      <label for="file"><i class="far fa-file-image"></i></label>
+      <input
+        onchange="changeImage(event)"
+        type="file"
+        name="file"
+        id="file"
+        accept="image/png, image/jpeg"
+      />
+
+      <button onclick="changeStyle(1)"><span id="underline">A</span></button>
+      <button onclick="changeStyle(2)"><span id="italic">I</span></button>
+      <button onclick="changeStyle(3)"><span id="bold">B</span></button>
+
+      <input type="color" name="color" id="color" onchange="changeColor()" />
+
+      <input
+        type="number"
+        id="fontSize"
+        onchange="changeFontSize()"
+        placeholder="12"
+      />
+
+      <button onclick="changeAlign(1)">
+        <i class="fas fa-align-center"></i>
+      </button>
+      <button onclick="changeAlign(2)">
+        <i class="fas fa-align-justify"></i>
+      </button>
+      <button onclick="changeAlign(3)">
+        <i class="fas fa-align-left"></i>
+      </button>
+      <button onclick="changeAlign(4)">
+        <i class="fas fa-align-right"></i>
+      </button>
+
+      <div class="undo-redo">
+        <span>ESTILO</span>
+        <div class="Row">
+          <button onclick="change(1)"><i class="fas fa-undo-alt"></i></button>
+          <button onclick="change(2)"><i class="fas fa-redo-alt"></i></button>
+        </div>
+      </div>
+      <div class="undo-redo">
+        <span>TEXTO</span>
+        <div class="Row">
+          <button onclick="changeText(1)">
+            <i class="fas fa-undo-alt"></i>
+          </button>
+          <button onclick="changeText(2)">
+            <i class="fas fa-redo-alt"></i>
+          </button>
+        </div>
+      </div>
+    </div>
+    <div id="editor" onclick="focusP()">
+      <p oninput="changeTextArr()" id="text" autofocus contenteditable></p>
+      <div id="boxImg">
+        <button onclick="exitEditorImage()">
+          <i class="far fa-eye-slash"></i>
+        </button>
+        <img id="editorImg" src="" />
+      </div>
+    </div>
+
+    <script
+      src="https://kit.fontawesome.com/3b9fb27255.js"
+      crossorigin="anonymous"
+    ></script>
+    <script src="js/main.js"></script>
+  </body>
+</html>
