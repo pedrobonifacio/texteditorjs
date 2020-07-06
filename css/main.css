@@ -43,9 +43,15 @@ button:hover,label:hover{
   display:flex;
   flex-direction:row;
   justify-content:space-between;
-  align-items: center;
+  align-items:flex-end;
   margin: 10px 0;
   flex-wrap: wrap;
+}
+.Row:not(.notMargin) > *:not(*:last-child):not(*:first-child){
+  margin: 0 2px;
+}
+.Row > .Row:last-child,.Row > .Row:first-child{
+  margin: 0;
 }
 
 #editor{
@@ -112,4 +118,9 @@ button:hover,label:hover{
 }
 #bold{
   font-weight: bold;
+}
+@media (max-width: 650px){
+  .Row > .Row:last-child{
+    margin: 3px 0;
+  }
 }
