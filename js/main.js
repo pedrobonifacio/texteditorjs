@@ -1,3 +1,55 @@
+//API GOOGLE FONTS 
+
+/*YOUR API KEY*/
+const apiKey = "AIzaSyD4wdXbupemfCte1ezohgcSm0bAv3ROe0Q";
+const url = `https://www.googleapis.com/webfonts/v1/webfonts?key=${apiKey}`;
+let fontsDiv = document.getElementById("fontsDiv");
+let fontSelect = document.getElementById("font");
+
+async function getFonts(){
+  if(localStorage.getItem("fonts") === null){
+    await fetch("https://www.googleapis.com/webfonts/v1/webfonts?sort=popularity&key=" + apiKey, )
+    .then((response) => {
+      response.json().then((result) => {
+        localStorage.setItem("fonts",JSON.stringify(result.items));
+      });
+    })
+    .catch((err) => console.error("Request error", err));
+  } 
+}
+async function loadFonts() {
+  let fontsStorage = JSON.parse(localStorage.getItem("fonts"));
+
+  for(let i = 0; i < fontsStorage.length; i++){
+    let option = document.createElement("option");
+    option.value = i
+    option.text = fontsStorage[i].family
+    fontSelect.appendChild(option)
+
+    const font = new FontFace(
+      fontsStorage[i],
+      `url(${fontsStorage[i].files.regular}) format("truetype")`,
+    );
+    // wait for font to be loaded
+    await font.load()
+    .then((font)=>{
+      document.fonts.add(font);
+
+    })
+    .catch(err => {
+      console.log(err)
+    });
+    // add font to document
+    //document.fonts.add(font);
+    // enable font with CSS class
+    document.body.classList.add('fonts-loaded')
+  }
+}
+
+getFonts();
+loadFonts();
+
+
 /*shortcuts*/
 document.addEventListener("keyup", (e) => {
   if (e.ctrlKey && e.key == "z") changeText(1);
@@ -45,7 +97,8 @@ const text = document.getElementById("text");
 
 function changeFont() {
   let fontValue = document.getElementById("font").value;
-  text.style.fontFamily = `var(${fontValue})`;
+  let fontsStorage = JSON.parse(localStorage.getItem("fonts"))
+  text.style.fontFamily = `${fontsStorage[fontValue].family}, ${fontsStorage[fontValue].category}`;
   changes.push({
     font: fontValue,
     styles: style.styles,
