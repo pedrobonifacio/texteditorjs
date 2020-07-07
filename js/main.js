@@ -1,7 +1,7 @@
 //API GOOGLE FONTS 
 
 /*YOUR API KEY*/
-const apiKey = "AIzaSyD4wdXbupemfCte1ezohgcSm0bAv3ROe0Q";
+const apiKey; /* YOUR API KEY GOOGLE FONTS, GET IN https://developers.google.com/fonts/docs/developer_api*/
 const url = `https://www.googleapis.com/webfonts/v1/webfonts?key=${apiKey}`;
 let fontsDiv = document.getElementById("fontsDiv");
 let fontSelect = document.getElementById("font");
