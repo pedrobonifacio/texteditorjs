@@ -1,3 +1,19 @@
+/*shortcuts*/
+document.addEventListener("keyup", (e) => {
+  if (e.ctrlKey && e.key == "z") changeText(1);
+  if (e.ctrlKey && e.key == "y") changeText(2);
+  if (e.ctrlKey && e.altKey && e.key == "z") change(1);
+  if (e.ctrlKey && e.altKey && e.key == "y") change(2);
+  if (e.ctrlKey && e.key == "u") changeStyle(1);
+  if (e.ctrlKey && e.key == "i") changeStyle(2);
+  if (e.ctrlKey && e.key == "b") changeStyle(3);
+  if (e.altKey && e.key == "h") changeAlign(1);
+  if (e.altKey && e.key == "j") changeAlign(2);
+  if (e.altKey && e.key == "g") changeAlign(3);
+  if (e.altKey && e.key == "k") changeAlign(4);
+
+});
+
 const changes = [
   {
     font: "--font-Roboto",
@@ -25,7 +41,7 @@ let style = {
 };
 let indexStyle = 0;
 let indexText = 0;
-const text = document.getElementById("text"); 
+const text = document.getElementById("text");
 
 function changeFont() {
   let fontValue = document.getElementById("font").value;
@@ -47,10 +63,9 @@ function changeFont() {
   indexStyle = changes.length - 1;
 }
 function changeStyle(type) {
-  if(type==1){
-    if(style.styles.underline)
-    {
-      text.style.textDecoration= "none";
+  if (type == 1) {
+    if (style.styles.underline) {
+      text.style.textDecoration = "none";
       changes.push({
         font: style.font,
         styles: {
@@ -73,9 +88,8 @@ function changeStyle(type) {
         color: style.color,
         align: style.align,
       };
-    }      
-    else{
-      text.style.textDecoration= "underline";
+    } else {
+      text.style.textDecoration = "underline";
       changes.push({
         font: style.font,
         styles: {
@@ -100,10 +114,9 @@ function changeStyle(type) {
       };
     }
   }
-  if(type==2){
-    if(style.styles.italic)
-    {
-      text.style.fontStyle= "normal";
+  if (type == 2) {
+    if (style.styles.italic) {
+      text.style.fontStyle = "normal";
       changes.push({
         font: style.font,
         styles: {
@@ -126,9 +139,8 @@ function changeStyle(type) {
         color: style.color,
         align: style.align,
       };
-    }      
-    else{
-      text.style.fontStyle= "italic";
+    } else {
+      text.style.fontStyle = "italic";
       changes.push({
         font: style.font,
         styles: {
@@ -153,9 +165,8 @@ function changeStyle(type) {
       };
     }
   }
-  if(type==3){
-    if(style.styles.bold)
-    {
+  if (type == 3) {
+    if (style.styles.bold) {
       text.style.fontWeight = "normal";
       changes.push({
         font: style.font,
@@ -179,8 +190,7 @@ function changeStyle(type) {
         color: style.color,
         align: style.align,
       };
-    }      
-    else{
+    } else {
       text.style.fontWeight = "bold";
       changes.push({
         font: style.font,
@@ -208,7 +218,7 @@ function changeStyle(type) {
   }
   indexStyle = changes.length - 1;
 }
-function changeColor(){
+function changeColor() {
   let colorValue = document.getElementById("color").value;
   text.style.color = colorValue;
   changes.push({
@@ -227,7 +237,7 @@ function changeColor(){
   };
   indexStyle = changes.length - 1;
 }
-function changeFontSize(){
+function changeFontSize() {
   let fontSizeValue = document.getElementById("fontSize").value;
   text.style.fontSize = `${fontSizeValue}pt`;
   changes.push({
@@ -248,19 +258,19 @@ function changeFontSize(){
 }
 function changeAlign(typeAlign) {
   let textAlign;
-  if(typeAlign == 1){
+  if (typeAlign == 1) {
     text.style.textAlign = "center";
     textAlign = "center";
   }
-  if(typeAlign == 2){
+  if (typeAlign == 2) {
     text.style.textAlign = "justify";
     textAlign = "justify";
   }
-  if(typeAlign == 3){
+  if (typeAlign == 3) {
     text.style.textAlign = "start";
     textAlign = "start";
   }
-  if(typeAlign == 4){
+  if (typeAlign == 4) {
     text.style.textAlign = "end";
     textAlign = "end";
   }
@@ -281,36 +291,28 @@ function changeAlign(typeAlign) {
   };
   indexStyle = changes.length - 1;
 }
-function focusP(){
+function focusP() {
   text.focus();
 }
 function change(typeChange) {
   let inputColor = document.getElementById("color");
   let inputFontSize = document.getElementById("fontSize");
 
-  if(typeChange == 1)
-    if(!indexStyle == 0)
-      indexStyle--;
-  else if(typeChange == 2)
-    if(indexStyle < changes.length - 1)
-      indexStyle++;
+  if (typeChange == 1)
+    if (!indexStyle == 0) indexStyle--;
+    else if (typeChange == 2) if (indexStyle < changes.length - 1) indexStyle++;
 
   text.style.fontFamily = `var(${changes[indexStyle].font})`;
 
-  if(changes[indexStyle].styles.bold)
-    text.style.fontWeight = "bold";
-  else
-    text.style.fontWeight = "normal";
-  
-  if(changes[indexStyle].styles.underline)
-    text.style.textDecoration = "underline";
-  else
-    text.style.textDecoration = "normal";
+  if (changes[indexStyle].styles.bold) text.style.fontWeight = "bold";
+  else text.style.fontWeight = "normal";
 
-  if(changes[indexStyle].styles.italic)
-    text.style.fontStyle = "italic";
-  else
-    text.style.fontStyle = "normal";
+  if (changes[indexStyle].styles.underline)
+    text.style.textDecoration = "underline";
+  else text.style.textDecoration = "normal";
+
+  if (changes[indexStyle].styles.italic) text.style.fontStyle = "italic";
+  else text.style.fontStyle = "normal";
 
   text.style.textAlign = changes[indexStyle].align;
 
@@ -323,30 +325,25 @@ function change(typeChange) {
   style = changes[indexStyle];
 }
 function changeText(typeChange) {
-  if(typeChange == 1)
-    if(!indexText == 0)
-      indexText--;
-  if(typeChange == 2)
-    if(indexText < changesText.length - 1)
-      indexText++;
+  if (typeChange == 1) if (!indexText == 0) indexText--;
+  if (typeChange == 2) if (indexText < changesText.length - 1) indexText++;
   text.textContent = changesText[indexText];
 }
 function changeTextArr() {
   changesText.push(text.textContent);
   indexText = changesText.length - 1;
 }
-function changeImage(event){
+function changeImage(event) {
   let reader = new FileReader();
-  reader.onload = function(){
+  reader.onload = function () {
     let editorImg = document.getElementById("editorImg");
     let boxImg = document.getElementById("boxImg");
     editorImg.src = reader.result;
-    boxImg.style.display = "block"
-  }
- reader.readAsDataURL(event.target.files[0]);
+    boxImg.style.display = "block";
+  };
+  reader.readAsDataURL(event.target.files[0]);
 }
-function exitEditorImage(){
+function exitEditorImage() {
   let boxImg = document.getElementById("boxImg");
-  boxImg.style.display = "none"
-
+  boxImg.style.display = "none";
 }

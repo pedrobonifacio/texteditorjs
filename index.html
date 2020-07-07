@@ -4,6 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="css/main.css" />
+    <link rel="stylesheet" href="css/tooltip.css">
     <title>Editor Text</title>
   </head>
   <body>
@@ -11,7 +12,7 @@
       <div class="Row">
         <div>
           <select name="font" id="font" onchange="changeFont()">
-            <option disabled="disabled" selected>Fonte</option>
+            <option disabled="disabled" selected>Font</option>
             <option value="--font-Roboto">Roboto</option>
             <option value="--font-OpenSans">Open Sans</option>
             <option value="--font-IndieFlower">Indie Flower</option>
@@ -28,10 +29,22 @@
         <input type="color" name="color" id="color" onchange="changeColor()" />
       </div>
       <div class="Row">
-        <button onclick="changeStyle(1)"><span id="underline">A</span></button>
-        <button onclick="changeStyle(2)"><span id="italic">I</span></button>
-        <button onclick="changeStyle(3)"><span id="bold">B</span></button>
-        <label for="file"><i class="far fa-file-image"></i></label>
+        <button class="tooltip" onclick="changeStyle(1)">
+          <span id="underline">A</span>
+          <span class="tooltiptext">Underline | Ctrl + U</span>
+        </button>
+        <button class="tooltip" onclick="changeStyle(2)">
+          <span id="italic">I</span>
+          <span class="tooltiptext">Italic | Ctrl + I</span>
+        </button>
+        <button class="tooltip" onclick="changeStyle(3)">
+          <span id="bold">B</span>
+          <span class="tooltiptext">Bold | Ctrl + B</span>
+        </button>
+        <label class="tooltip" for="file">
+          <i class="far fa-file-image"></i>
+          <span class="tooltiptext">Add Image</span>
+        </label>
         <input
           onchange="changeImage(event)"
           type="file"
@@ -41,35 +54,47 @@
         />
       </div>
       <div class="Row">
-        <button onclick="changeAlign(1)">
-          <i class="fas fa-align-center"></i>
-        </button>
-        <button onclick="changeAlign(2)">
-          <i class="fas fa-align-justify"></i>
-        </button>
-        <button onclick="changeAlign(3)">
+        <button class="tooltip" onclick="changeAlign(3)">
           <i class="fas fa-align-left"></i>
+          <span class="tooltiptext">Align Right | Alt + G</span>
         </button>
-        <button onclick="changeAlign(4)">
+        <button class="tooltip" onclick="changeAlign(1)">
+          <i class="fas fa-align-center"></i>
+          <span class="tooltiptext">Align Center | Alt + H</span>
+        </button>
+        <button class="tooltip" onclick="changeAlign(2)">
+          <i class="fas fa-align-justify"></i>
+          <span class="tooltiptext">Align Justify | Alt + J</span>
+        </button>
+        <button class="tooltip" onclick="changeAlign(4)">
           <i class="fas fa-align-right"></i>
+          <span class="tooltiptext">Align Left | Alt + K</span>
         </button>
       </div>
       <div class="Row">
         <div class="undo-redo">
-          <span>ESTILO</span>
+          <span>STYLE</span>
           <div class="Row notMargin">
-            <button onclick="change(1)"><i class="fas fa-undo-alt"></i></button>
-            <button onclick="change(2)"><i class="fas fa-redo-alt"></i></button>
+            <button class="tooltip" onclick="change(1)">
+              <i class="fas fa-undo-alt"></i>
+              <span class="tooltiptext">Undo Style | Ctrl + Alt + Z</span>
+            </button>
+            <button class="tooltip" onclick="change(2)">
+              <i class="fas fa-redo-alt"></i>
+              <span class="tooltiptext">Redo Style | Ctrl + Alt + Y</span>
+            </button>
           </div>
         </div>
         <div class="undo-redo">
-          <span>TEXTO</span>
+          <span>TEXT</span>
           <div class="Row notMargin">
-            <button onclick="changeText(1)">
+            <button class="tooltip" onclick="changeText(1)">
               <i class="fas fa-undo-alt"></i>
+              <span class="tooltiptext">Undo Text | Ctrl + Z</span>
             </button>
-            <button onclick="changeText(2)">
+            <button class="tooltip" onclick="changeText(2)">
               <i class="fas fa-redo-alt"></i>
+              <span class="tooltiptext">Redo Text | Ctrl + Y</span>
             </button>
           </div>
         </div>
